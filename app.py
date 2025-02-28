@@ -9,7 +9,7 @@ REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing requ
 
 @app.route("/metrics")
 def metrics():
-    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)  # Setăm content type corect
+    return Response(generate_latest(), content_type=CONTENT_TYPE_LATEST)  # Setăm corect Content-Type
 
 @REQUEST_TIME.time()
 def process_request():
