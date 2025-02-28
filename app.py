@@ -12,19 +12,19 @@ REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing requ
 # Endpoint pentru a expune metricile Prometheus
 @app.route("/metrics")
 def metrics():
-    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)  # ✅ Fix: Setăm tipul de conținut corect
+    return Response(generate_latest(), mimetype=CONTENT_TYPE_LATEST)  # ✅ Setează tipul de conținut corect
 
 # Funcție pentru a simula un proces de lungă durată
-@REQUEST_TIME.time()  # Această decoratoare va măsura timpul de execuție
+@REQUEST_TIME.time()
 def process_request():
     time.sleep(random.uniform(0.1, 1.0))  # Întârziere aleatorie între 0.1 și 1 secunde
     return "Request processed"
 
-# Endpoint pentru a apela procesul
+# Endpoint principal
 @app.route("/")
 def hello():
     process_request()
     return "Hello, World!"
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)  # ✅ Rulează pe portul 5000 pentru a se potrivi cu Prometheus
+    app.run(host="0.0.0.0", port=5000)  # ✅ Flask expune deja metricile pe portul 5000
