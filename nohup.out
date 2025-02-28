@@ -1,0 +1,44 @@
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.57:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [28/Feb/2025 02:18:36] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:18:51] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:19:06] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:19:21] "GET /metrics HTTP/1.1" 200 -
+Traceback (most recent call last):
+  File "/home/grigore/CI-CD-Project/app.py", line 34, in <module>
+    start_http_server(8000)  # Acesta este portul pe care Prometheus va "scrape"-ui metricile
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/site-packages/prometheus_client/exposition.py", line 233, in start_wsgi_server
+    httpd = make_server(addr, port, app, TmpServer, handler_class=_SilentHandler)
+  File "/usr/lib/python3.13/wsgiref/simple_server.py", line 150, in make_server
+    server = server_class((host, port), handler_class)
+  File "/usr/lib/python3.13/socketserver.py", line 457, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/wsgiref/simple_server.py", line 50, in server_bind
+    HTTPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/socketserver.py", line 478, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 98] Address already in use
+127.0.0.1 - - [28/Feb/2025 02:19:36] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:19:51] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:20:06] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:20:21] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:20:36] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:20:51] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:21:06] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:21:21] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:21:36] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:21:51] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:22:06] "GET /metrics HTTP/1.1" 200 -
+127.0.0.1 - - [28/Feb/2025 02:22:21] "GET /metrics HTTP/1.1" 200 -
